@@ -155,6 +155,34 @@ vault_log_level: "info"
 vault_store_root_token: no
 ```
 
+## [Hashivault Management Variables](#management-variables)
+
+The default values for the variables are set in `defaults/main.yml`:
+```yaml
+---
+# Management variables
+vault_url: 'localhost:8200'     # url and port with hashivault
+vault_token: super_strong_token # access token. The provided token must have rights for management hashivault
+
+vault_policies: 
+  read_policy: |
+    path "sys/policies"
+    {
+      capabilities = ["read"]
+    }
+
+vault_auth_methods:
+  # more options you can see here - https://www.vaultproject.io/api-docs/system/auth
+  userpass:
+    type: userpass
+    description: Example userpass auth
+
+vault_userpasses:
+  # more options you can see here - https://www.vaultproject.io/api-docs/auth/userpass
+  example:
+    password: super_strong_password
+    auth_method: example_user
+```
 ## [Requirements](#requirements)
 
 - pip packages listed in [requirements.txt](https://github.com/robertdebock/ansible-role-vault/blob/master/requirements.txt).

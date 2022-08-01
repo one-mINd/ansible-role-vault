@@ -103,3 +103,26 @@ vault_log_level: "info"
 
 # You can store the root token in a file to make using Vault easier.
 vault_store_root_token: no
+
+# Management variables
+vault_url: 'localhost:8200'
+vault_token: super_strong_token
+
+vault_policies: 
+  read_policy: |
+    path "sys/policies"
+    {
+      capabilities = ["read"]
+    }
+
+vault_auth_methods:
+  # more options you can see here - https://www.vaultproject.io/api-docs/system/auth
+  userpass:
+    type: userpass
+    description: Example userpass auth
+
+vault_userpasses:
+  # more options you can see here - https://www.vaultproject.io/api-docs/auth/userpass
+  example:
+    password: super_strong_password
+    auth_method: example_user
