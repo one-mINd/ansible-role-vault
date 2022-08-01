@@ -108,21 +108,21 @@ vault_store_root_token: no
 vault_url: 'localhost:8200'
 vault_token: super_strong_token
 
-vault_policies: 
-  read_policy: |
-    path "sys/policies"
-    {
-      capabilities = ["read"]
-    }
+vault_policies: {}
+  # read_policy: |
+  #   path "sys/policies"
+  #   {
+  #     capabilities = ["read"]
+  #   }
 
-vault_auth_methods:
+vault_auth_methods: {}
   # more options you can see here - https://www.vaultproject.io/api-docs/system/auth
-  userpass:
-    type: userpass
-    description: Example userpass auth
+  # userpass:
+  #   type: userpass
+  #   description: Example userpass auth
 
-vault_userpasses:
+vault_userpasses: {}
   # more options you can see here - https://www.vaultproject.io/api-docs/auth/userpass
-  example:
-    password: super_strong_password
-    auth_method: example_user
+  # example:
+  #   password: super_strong_password
+  #   auth_method: example_user
