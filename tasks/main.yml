@@ -28,3 +28,6 @@
     - vault_kv_secrets is defined
     - vault_root_token is defined or
       vault_init_output.root_token is defined
+
+- name: import management.yml
+  ansible.builtin.import_tasks: management.yml
