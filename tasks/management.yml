@@ -1,6 +1,6 @@
 ---
 - name: Manage vault policies
-  script: policy_manage.py --url {{ vault_url }} --token {{ vault_token }} --policies {{ vault_policies | quote }} 
+  script: policy_manage.py --url {{ vault_url }} --token {{ vault_init_output.root_token | default(vault_root_token) }} --policies {{ vault_policies | quote }} 
   args:
     executable: "python3"
   register: result
@@ -10,7 +10,7 @@
 
 
 - name: Manage vault auth methods
-  script: auth_methods_manage.py --url {{ vault_url }} --token {{ vault_token }} --auth_methods {{ vault_auth_methods | quote }}
+  script: auth_methods_manage.py --url {{ vault_url }} --token {{ vault_init_output.root_token | default(vault_root_token) }} --auth_methods {{ vault_auth_methods | quote }}
   args:
     executable: "python3"
   register: result
@@ -20,7 +20,7 @@
 
 
 - name: Manage userpass authentication 
-  script: userpass_manage.py --url {{ vault_url }} --token {{ vault_token }} --userpasses {{ vault_userpasses | quote }}
+  script: userpass_manage.py --url {{ vault_url }} --token {{ vault_init_output.root_token | default(vault_root_token) }} --userpasses {{ vault_userpasses | quote }}
   args:
     executable: "python3"
   register: result
